@@ -1,0 +1,37 @@
+import random
+
+game_start = True
+while game_start:
+    user_choice = {
+        'r': '✊',
+        'p': '✋',
+        's': '✌️',
+        'q': 'Quit'  # Added option to quit
+    }
+    possible_choices = ["r", "p", "s"]
+
+    choice_one = input("Enter a choice (r, p, s, or q to quit): ").lower()
+
+    if choice_one == 'q':
+        game_start = False
+        print("Thanks for playing!")
+        break  # Exit the loop
+
+    if choice_one not in possible_choices:  # Check against possible_choices
+        print("Invalid choice")
+        continue
+
+    choice_two = random.choice(possible_choices)
+    print(f"\nYou chose: {user_choice[choice_one]}")
+    print(f"Computer chose: {user_choice[choice_two]}")
+
+    if choice_one == choice_two:
+        print("tie")
+    elif (
+          choice_one == "r" and choice_two == "s" or
+          choice_one == "p" and choice_two == "r" or
+          choice_one == "s" and choice_two == "p"
+    ):
+        print("You won")
+    else:
+        print("You lost")
