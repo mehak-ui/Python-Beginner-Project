@@ -1,0 +1,42 @@
+import math
+
+active = True
+
+while active:
+    print("Select operation:")
+    print("1. Add")
+    print("2. Sub")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Exit") # Added exit option
+
+    try:
+        choice = input("Enter choice(1/2/3/4/5): ") # Added 5 for exit
+
+        if choice == '5': # Check if user wants to exit
+            active = False
+            print("Calculator off.")
+            continue
+
+        if choice in ('1', '2', '3', '4'): # Check if choice is valid operation
+            first = float(input("Enter first number: ")) # Use float for potential decimal results
+            second = float(input("Enter second number: "))
+
+            if choice == '1':
+                print(f"{first} + {second} = {first + second}")
+            elif choice == '2':
+                print(f"{first} - {second} = {first - second}")
+            elif choice == '3':
+                print(f"{first} * {second} = {first * second}")
+            elif choice == '4':
+                if second == 0: # Handle division by zero
+                    print("Error: Cannot divide by zero")
+                else:
+                    print(f"{first} / {second} = {first / second}")
+        else:
+            print("Invalid input")
+
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
